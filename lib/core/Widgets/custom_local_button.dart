@@ -19,8 +19,7 @@ class CustomLocalButtom extends StatelessWidget {
       width: (width)??100,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            shape: ContinuousRectangleBorder(
-                borderRadius: BorderRadius.circular(20)),
+           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),
             backgroundColor: AppColors.primary,
             padding:const EdgeInsets.all(2),
           ),

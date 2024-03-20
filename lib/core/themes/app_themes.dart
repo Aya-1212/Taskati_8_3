@@ -8,6 +8,8 @@ ThemeData lightTheme = ThemeData(
     appBarTheme: AppBarTheme(color: AppColors.white),
     scaffoldBackgroundColor: AppColors.white,
     inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+     constraints: BoxConstraints(maxHeight: 120),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
       color: AppColors.primary,
@@ -37,6 +39,7 @@ ThemeData lightTheme = ThemeData(
     appBarTheme: AppBarTheme(color: AppColors.black),
     scaffoldBackgroundColor: AppColors.black,
     inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
       color: AppColors.primary,

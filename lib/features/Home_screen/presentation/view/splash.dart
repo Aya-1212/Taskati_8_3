@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati_8_3/core/Constants/assets_icons.dart';
 import 'package:taskati_8_3/core/Functions/routing.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
-import 'package:taskati_8_3/features/Home_screen/view/upload_view.dart';
-import 'package:taskati_8_3/features/Main_Screen/View/main_view.dart';
+import 'package:taskati_8_3/core/services/local_storage.dart';
+import 'package:taskati_8_3/features/Home_screen/presentation/view/upload_view.dart';
+import 'package:taskati_8_3/features/Main_Screen/presentation/View/main_view.dart';
 
 class SplashView extends StatefulWidget {
   SplashView({super.key});
@@ -17,7 +18,7 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-  var box = Hive.box('user');
+
  
   @override
   void initState() {
@@ -26,7 +27,7 @@ class _SplashViewState extends State<SplashView> {
       Duration(seconds: 8),
       () {
         pushWithReplacement(context,
-            ((box.get('isUpload')?? false) ) ? MainView() : UploadView());
+            ((AppLocalStorage.getUserData('isUpload')?? false) ) ? MainView() : UploadView());
       },
     );
   }
@@ -43,9 +44,7 @@ class _SplashViewState extends State<SplashView> {
             'Taskati',
             style: getTitleFont(),
           ),
-          SizedBox(
-            height: 15,
-          ),
+          Gap(15),
           Text(
             'It\'s Time to Get Organized',
             style: getSmallFont(),
