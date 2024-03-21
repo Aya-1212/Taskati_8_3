@@ -1,14 +1,27 @@
 import 'package:hive/hive.dart';
+import 'package:taskati_8_3/features/add_task/data/task_model.dart';
 
 class AppLocalStorage {
-  static late Box box;
+  static late Box userBox;
+  static late Box taskBox ;
+ //__________init________________
   static init (){
-     box = Hive.box('user');
+     userBox = Hive.box('user');
+     taskBox = Hive.box<TaskModel>('task');
   }
-  static cacheUserData (Key,value){
-    box.put(Key, value);
+   //_____________user____________
+  static cacheUserData (key,value){
+    userBox.put(key, value);
   }
-  static getUserData (Key){
-    return box.get(Key);
+  static getUserData (key){
+    return userBox.get(key);
   }
-}
+  //______________task______________
+  static cacheTaskData (key,TaskModel value){
+    userBox.put(key, value);
+  }
+  static TaskModel getTaskData (key){
+    return taskBox.get(key);
+  }
+  }
+  

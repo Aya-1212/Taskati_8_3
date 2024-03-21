@@ -7,7 +7,9 @@ import 'package:taskati_8_3/core/Functions/routing.dart';
 import 'package:taskati_8_3/core/Utils/app_colors.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
 import 'package:taskati_8_3/core/Widgets/custom_local_button.dart';
+import 'package:taskati_8_3/core/services/local_storage.dart';
 import 'package:taskati_8_3/features/Main_Screen/presentation/View/main_view.dart';
+import 'package:taskati_8_3/features/add_task/data/task_model.dart';
 
 class AddTaskView extends StatefulWidget {
   AddTaskView({super.key});
@@ -17,13 +19,19 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
-  @override
-  Widget build(BuildContext context) {
+
+  var titleController = TextEditingController();
+    var noteController = TextEditingController();
     int selectedIndex = 0;
     String date = DateFormat('dd/MM/yyyy').format(DateTime.now());
     String startTime = DateFormat('hh:mm a').format(DateTime.now());
     String endTime =
         DateFormat('hh:mm a').format(DateTime.now().add(Duration(hours: 2)));
+
+
+  @override
+  Widget build(BuildContext context) {
+  
     return Scaffold(
       resizeToAvoidBottomInset: false,
       //__________________AppBar___________________________
@@ -56,6 +64,7 @@ class _AddTaskViewState extends State<AddTaskView> {
 
           Gap(10),
           TextFormField(
+            controller: titleController,
             decoration: InputDecoration(
                 hintText: 'Enter Title Here',
                 hintStyle: getSmallFont(colors: AppColors.black)),
@@ -68,6 +77,7 @@ class _AddTaskViewState extends State<AddTaskView> {
           ),
           Gap(10),
           TextFormField(
+            controller: noteController,
             maxLines: 4,
             decoration: InputDecoration(
               hintText: 'Enter Note Here',
@@ -230,6 +240,20 @@ class _AddTaskViewState extends State<AddTaskView> {
               CustomLocalButtom(
                 text: 'Create Task',
                 onpressed: () {
+                  String id = '${titleController.text}${DateTime.now()}';
+                  AppLocalStorage.cacheTaskData(
+                      id,
+                      TaskModel(
+                          id: id,
+                          title: titleController.text,
+                          note: noteController.text,
+                          date: date,
+                          startTime: startTime,
+                          endTime: endTime,
+                          color: selectedIndex,
+                          isComplete: false)
+                          );
+
                   pushWithReplacement(context, MainView());
                 },
                 width: 110,
@@ -237,7 +261,7 @@ class _AddTaskViewState extends State<AddTaskView> {
             ],
           )
 
-          //end raw colors&butto,
+          //end raw colors&buttom
         ]),
       ),
     );

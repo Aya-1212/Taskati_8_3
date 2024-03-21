@@ -10,7 +10,7 @@ import 'package:taskati_8_3/core/Functions/routing.dart';
 import 'package:taskati_8_3/core/Utils/app_colors.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
 import 'package:taskati_8_3/core/services/local_storage.dart';
-import 'package:taskati_8_3/features/Home_screen/presentation/widgets/custom_elev_button.dart';
+import 'package:taskati_8_3/features/Home_screen/presentation/widgets/Custom_elev_button.dart';
 import 'package:taskati_8_3/features/Home_screen/presentation/widgets/snack_error.dart';
 import 'package:taskati_8_3/features/Main_Screen/presentation/View/main_view.dart';
 
@@ -68,14 +68,14 @@ class _UploadViewState extends State<UploadView> {
             ),
            const Gap(10),
             // 2 custom elevatedbutton
-            customElevatedButton(
+            CustomElevatedButton(
               onpressed: () {
                 uploadImage(isCamera: true);
               },
               text: 'Upload from camera',
             ),
             const Gap(10),
-            customElevatedButton(
+            CustomElevatedButton(
                 text: 'Upload from gallery',
                 onpressed: () {
                   uploadImage(isCamera: false);

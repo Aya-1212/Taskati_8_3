@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:taskati_8_3/core/Utils/app_colors.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
 
-class customElevatedButton extends StatelessWidget {
+class CustomElevatedButton extends StatelessWidget {
   final String text;
   final double? width;
   final double? height;
   final Function() onpressed;
   
-  const customElevatedButton({
+  const CustomElevatedButton({
     super.key,
     required this.text,
      this.width,
