@@ -253,7 +253,6 @@ class _AddTaskViewState extends State<AddTaskView> {
                           color: selectedIndex,
                           isComplete: false)
                           );
-
                   pushWithReplacement(context, MainView());
                 },
                 width: 110,

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:taskati_8_3/core/Utils/app_colors.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
@@ -14,7 +16,9 @@ class TaskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      margin: const EdgeInsets.all(5),
+      //margin: const EdgeInsets.all(5),
+      //why? علشان المارجن ماثر علي شكل (containers dismissible)
+      //مخليهم علي قد container + margin
       decoration: BoxDecoration(
         color: (model.color == 0) ?
                    AppColors.primary
@@ -27,36 +31,40 @@ class TaskItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                model.title,
-                style: getBodyFont(fontWeight: FontWeight.bold),
-              ),
-              const Gap(5),
-              Row(
-                children: [
-                  Icon(
-                    Icons.watch_later_outlined,
-                    color: AppColors.white,
-                    size: 20,
-                  ),
-                  const Gap(8),
-                  Text(
-                    '${model.startTime}-${model.endTime}',
-                    style: getSmallFont(fontSize: 16, colors: AppColors.white),
-                  ),
-                ],
-              ),
-              const Gap(5),
-              Text(
-                model.note,
-                style: getBodyFont(fontSize: 18),
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  model.title,
+                  style: getBodyFont(fontWeight: FontWeight.bold),
+                ),
+                const Gap(5),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.watch_later_outlined,
+                      color: AppColors.white,
+                      size: 20,
+                    ),
+                    const Gap(8),
+                    Text(
+                      '${model.startTime}-${model.endTime}',
+                      style: getSmallFont(fontSize: 16, colors: AppColors.white),
+                    ),
+                  ],
+                ),
+                const Gap(5),
+                Text(
+                  model.note,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: getBodyFont(fontSize: 18),
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
+          
           RotatedBox(
               quarterTurns: 2,
               child: Container(

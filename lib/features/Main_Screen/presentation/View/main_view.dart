@@ -65,6 +65,7 @@ class _MainViewState extends State<MainView> {
                 valueListenable: Hive.box<TaskModel>('task').listenable(),
                 //                box دا كل التاسكات
                 builder: (context, box, child) {
+                  print(box.values.length);
                   List<TaskModel> tasks = [];
                   // هنا بلف علي تاسك تاسك
                   for (var task in box.values) {
@@ -77,7 +78,7 @@ class _MainViewState extends State<MainView> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                     Lottie.asset(AssetsIcons.empty,height: 120,width: 120),
+                     Lottie.asset(AssetsIcons.empty,height: 200,width: 200),
                         const Gap(10),
                         Text(
                           'you don\'t have any tasks yet',
@@ -90,9 +91,12 @@ class _MainViewState extends State<MainView> {
                         ),
                       ],
                     );
-                  }
-                  return ListView.builder(
+                  } 
+                  return ListView.separated(
                     itemCount: tasks.length,
+                    separatorBuilder: (context, index) {
+                        return  const Gap(10);
+                    },
                     itemBuilder: (BuildContext context, int index) {
                       return Dismissible(
                         key: UniqueKey(),
@@ -137,7 +141,7 @@ class _MainViewState extends State<MainView> {
                           ),
                         ),
                         onDismissed: (direction) {
-                          if (DismissDirection.startToEnd == true) {
+                          if ( direction == DismissDirection.startToEnd) {
                             box.put(
                                 tasks[index].id,
                                 TaskModel(

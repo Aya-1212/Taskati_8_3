@@ -29,5 +29,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/logo.json
-    - assets/empty.png
     - assets/user.png
+    - assets/empty.json
