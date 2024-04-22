@@ -49,7 +49,7 @@ class _UploadViewState extends State<UploadView> {
                   },
                   child: Text(
                     'Done',
-                    style: getSmallFont(colors: AppColors.primary),
+                    style: getSmallFont(context,colors: AppColors.primary),
                   ))
             ],
           )),
@@ -91,7 +91,7 @@ class _UploadViewState extends State<UploadView> {
                 });
               },
               decoration: InputDecoration(
-                  hintText: 'Enter your Name', hintStyle: getSmallFont()),
+                  hintText: 'Enter your Name', hintStyle: getSmallFont(context,)),
             ),
           ],
         )),

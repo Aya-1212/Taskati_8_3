@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:taskati_8_3/core/Utils/app_colors.dart';
+import 'package:taskati_8_3/core/Functions/routing.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
 import 'package:taskati_8_3/core/services/local_storage.dart';
+import 'package:taskati_8_3/features/profile/presentation/view/profile_view.dart';
 
 class CustomHeader extends StatelessWidget {
   const CustomHeader({
@@ -20,12 +21,11 @@ class CustomHeader extends StatelessWidget {
          children: [
            Text(
              'Hello, ${AppLocalStorage.getUserData('name')}',
-             style: getTitleFont(),
+             style: getTitleFont(context,),
            ),
            Text('Have A Nice Day.',
-               style: getSmallFont(
+               style: getSmallFont(context,
                 fontWeight: FontWeight.w400,
-                 colors: AppColors.black,
                )),
          ],
        ),
@@ -33,9 +33,14 @@ class CustomHeader extends StatelessWidget {
      const Spacer(),
      //image
      Expanded(
-       child: CircleAvatar(
-         radius: 35,
-         backgroundImage: FileImage(File(AppLocalStorage.getUserData('image'))) as ImageProvider,
+       child: InkWell(
+        onTap: (){
+          pushTo(context, ProfileView());
+        },
+         child: CircleAvatar(
+           radius: 35,
+           backgroundImage: FileImage(File(AppLocalStorage.getUserData('image'))) as ImageProvider,
+         ),
        ),
      ),
                 ],

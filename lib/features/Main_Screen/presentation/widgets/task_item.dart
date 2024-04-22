@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:taskati_8_3/core/Utils/app_colors.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
-import 'package:taskati_8_3/features/add_task/data/task_model.dart';
+import 'package:taskati_8_3/features/add%20task/data/model/task_model.dart';
+
 
 class TaskItem extends StatelessWidget {
   const TaskItem({
@@ -37,7 +36,7 @@ class TaskItem extends StatelessWidget {
               children: [
                 Text(
                   model.title,
-                  style: getBodyFont(fontWeight: FontWeight.bold),
+                  style: getBodyFont(context,fontWeight: FontWeight.bold,colors: AppColors.white),
                 ),
                 const Gap(5),
                 Row(
@@ -50,7 +49,7 @@ class TaskItem extends StatelessWidget {
                     const Gap(8),
                     Text(
                       '${model.startTime}-${model.endTime}',
-                      style: getSmallFont(fontSize: 16, colors: AppColors.white),
+                      style: getSmallFont(context,fontSize: 16, colors: AppColors.white),
                     ),
                   ],
                 ),
@@ -59,7 +58,7 @@ class TaskItem extends StatelessWidget {
                   model.note,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: getBodyFont(fontSize: 18),
+                  style: getBodyFont(context,fontSize: 18,colors: AppColors.white),
                 ),
               ],
             ),
@@ -77,7 +76,7 @@ class TaskItem extends StatelessWidget {
               quarterTurns: 3,
               child: Text(
                 'TODO',
-                style: getSmallFont(colors: AppColors.white),
+                style: getSmallFont(context,colors: AppColors.white),
               )),
         ],
       ),

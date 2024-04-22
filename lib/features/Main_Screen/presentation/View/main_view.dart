@@ -11,10 +11,10 @@ import 'package:taskati_8_3/core/Functions/routing.dart';
 import 'package:taskati_8_3/core/Utils/app_colors.dart';
 import 'package:taskati_8_3/core/Utils/text_style.dart';
 import 'package:taskati_8_3/core/Widgets/custom_local_button.dart';
+import 'package:taskati_8_3/features/add%20task/data/model/task_model.dart';
 import 'package:taskati_8_3/features/Main_Screen/presentation/widgets/task_item.dart';
-import 'package:taskati_8_3/features/add_task/data/task_model.dart';
-import 'package:taskati_8_3/features/add_task/presentation/view/add_task.dart';
 import 'package:taskati_8_3/features/Main_Screen/presentation/widgets/custom_header.dart';
+import 'package:taskati_8_3/features/add%20task/presentation/view/add_task/add_task.dart';
 
 class MainView extends StatefulWidget {
   MainView({super.key});
@@ -36,7 +36,7 @@ class _MainViewState extends State<MainView> {
           child: Column(
             children: [
               //home header
-              CustomHeader(),
+              const CustomHeader(),
               const Gap(15),
               // bottom add task
               secondLayer(context),
@@ -54,7 +54,9 @@ class _MainViewState extends State<MainView> {
                     selectedDatePicked =
                         DateFormat('dd/MM/yyyy').format(selectedDate);
                   });
-                },
+                },monthTextStyle:getSmallFont(context,) ,
+                dateTextStyle:getSmallFont(context,) ,
+                dayTextStyle: getSmallFont(context,),
               ),
               const Gap(15),
               //tasks
@@ -65,7 +67,6 @@ class _MainViewState extends State<MainView> {
                 valueListenable: Hive.box<TaskModel>('task').listenable(),
                 //                box دا كل التاسكات
                 builder: (context, box, child) {
-                  print(box.values.length);
                   List<TaskModel> tasks = [];
                   // هنا بلف علي تاسك تاسك
                   for (var task in box.values) {
@@ -82,12 +83,12 @@ class _MainViewState extends State<MainView> {
                         const Gap(10),
                         Text(
                           'you don\'t have any tasks yet',
-                          style: getSmallFont(colors: AppColors.black,fontSize: 13),
+                          style: getSmallFont(context,fontSize: 13),
                         ),
                         const Gap(3),
                         Text(
                           'Add new task to make your days productive',
-                          style: getSmallFont(colors: AppColors.black,fontSize: 13),
+                          style: getSmallFont(context,fontSize: 13),
                         ),
                       ],
                     );
@@ -114,7 +115,7 @@ class _MainViewState extends State<MainView> {
                               const Gap(5),
                               Text(
                                 'Complete',
-                                style: getSmallFont(
+                                style: getSmallFont(context,
                                     colors: AppColors.white, fontSize: 14),
                               )
                             ],
@@ -134,7 +135,7 @@ class _MainViewState extends State<MainView> {
                               const Gap(5),
                               Text(
                                 'Delete',
-                                style: getSmallFont(
+                                style: getSmallFont(context,
                                     colors: AppColors.white, fontSize: 14),
                               )
                             ],
@@ -179,11 +180,11 @@ class _MainViewState extends State<MainView> {
         children: [
           Text(
             DateFormat.yMMMMd().format(mainView),
-            style: getTitleFont(colors: AppColors.black),
+            style: getBodyFont(context,fontWeight: FontWeight.w600),
           ),
           Text(
             'Today',
-            style: getTitleFont(colors: AppColors.black),
+            style: getBodyFont(context,fontWeight: FontWeight.w600),
           ),
         ],
       ),

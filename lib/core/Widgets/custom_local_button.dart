@@ -26,7 +26,7 @@ class CustomLocalButtom extends StatelessWidget {
           onPressed: onpressed,
           child: Text(
             text,
-            style: getSmallFont(fontSize: 16,
+            style: getSmallFont(context,fontSize: 16,
                 colors: AppColors.white, fontWeight: FontWeight.w400),
           )),
     );

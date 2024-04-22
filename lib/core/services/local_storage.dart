@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:taskati_8_3/features/add_task/data/task_model.dart';
+import 'package:taskati_8_3/features/add%20task/data/model/task_model.dart';
+
 
 class AppLocalStorage {
   static late Box userBox;

@@ -1,6 +1,6 @@
 import 'package:hive_flutter/adapters.dart';
-part 'task_model.g.dart';
-@HiveType(typeId: 1)
+part'task_model.g.dart';
+@HiveType(typeId: 0)
 class TaskModel {
   @HiveField(0)
   final String id;

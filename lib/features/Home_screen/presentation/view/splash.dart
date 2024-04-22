@@ -42,12 +42,12 @@ class _SplashViewState extends State<SplashView> {
           Lottie.asset(AssetsIcons.logo),
           Text(
             'Taskati',
-            style: getTitleFont(),
+            style: getTitleFont(context,),
           ),
           Gap(15),
           Text(
             'It\'s Time to Get Organized',
-            style: getSmallFont(),
+            style: getSmallFont(context,),
           ),
         ],
       )),
