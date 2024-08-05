@@ -223,7 +223,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                       style: getBodyFont(context,colors: AppColors.black),
                     ),
                     Row(
-                      children: List.generate(
+                      children: List.generate(-
                         3,
                         (index) => Padding(
                           padding: EdgeInsets.all(3),
