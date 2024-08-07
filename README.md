@@ -1,7 +1,7 @@
 # Flutter Project
 
 ## Taskati
-Stay Organized and Accomplish More with Our Task Management App.The app is your personal assistant for managing your daily tasks efficiently. Create, prioritize, and track your to-do list with ease. Create, track your to-do list with ease.
+Stay Organized and Accomplish More with Our Task Management App.The app is your personal assistant for managing your daily tasks efficiently. Create, prioritize, and track your to-do list with ease.
 
 #### Key Features:
 - Create and manage tasks: Easily add new tasks.
